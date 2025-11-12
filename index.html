@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Professional Typing Master - Improve your typing speed and accuracy with real-time analytics"/>
+    <meta name="keywords" content="typing test, typing speed, typing practice, wpm test">
+
+    <title>Pro Typing Master - Enhance Your Typing Skills</title>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌨️</text></svg>">
+  </head>
+  <body>
+    <div class="container-fluid box">
+      <!-- Header Section -->
+      <header class="top">
+        <div class="header-content">
+          <h1 id="heading" class="yellow">
+            <i class="fas fa-keyboard"></i>
+            Pro Typing Master
+          </h1>
+          <p class="tagline">Test and improve your typing skills</p>
+        </div>
+        
+        <div class="limits-box">
+          <div class="limit-group">
+            <span class="limit-label">Time:</span>
+            <div class="limit">
+              <a id="thirty" class="yellow limit-btn active" href="#">30s</a>
+              <a id="sixty" class="limit-btn" href="#">60s</a>
+              <a id="oneTwenty" class="limit-btn" href="#">120s</a>
+            </div>
+          </div>
+          
+          <div class="limit-group">
+            <span class="limit-label">Difficulty:</span>
+            <div class="limit">
+              <a id="beg" class="yellow limit-btn active" href="#">Beginner</a>
+              <a id="pro" class="limit-btn" href="#">Advanced</a>
+              <a id="expert" class="limit-btn" href="#">Expert</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Stats Section -->
+      <div class="stats center">
+        <div class="stat-block if">
+          <div class="stat-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div id="time" class="details if">30</div>
+          <div id="timeName" class="stat-name yellow if">Time</div>
+        </div>
+
+        <div class="stat-block if">
+          <div class="stat-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <div id="wpm" class="details if">0</div>
+          <div class="stat-name yellow if">WPM</div>
+        </div>
+
+        <div class="stat-block if">
+          <div class="stat-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <div id="accuracy" class="details if">0%</div>
+          <div class="stat-name yellow if">Accuracy</div>
+        </div>
+
+        <div class="stat-block if">
+          <div class="stat-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div id="correctWords" class="details if">0</div>
+          <div class="stat-name yellow if">Correct</div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">0% Complete</div>
+      </div>
+
+      <!-- Text Display Area -->
+      <div class="text-display-container">
+        <div class="text-display" id="textDisplay"></div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area center">
+        <textarea rows="3" class="text-input" id="textInput" 
+                  placeholder="Start typing here... (Press TAB to restart)" 
+                  autofocus autocomplete="off" autocorrect="off" 
+                  autocapitalize="off" spellcheck="false"></textarea>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls center">
+        <button id="restartBtn" class="control-btn restart">
+          <i class="fas fa-redo"></i>
+          Restart Test
+        </button>
+        
+        <button id="pauseBtn" class="control-btn pause">
+          <i class="fas fa-pause"></i>
+          Pause
+        </button>
+        
+        <button id="soundToggle" class="control-btn sound">
+          <i class="fas fa-volume-up"></i>
+          Sound
+        </button>
+      </div>
+
+      <!-- Results Modal -->
+      <div class="results-modal" id="resultsModal">
+        <div class="modal-content">
+          <h3>Test Completed! 🎉</h3>
+          <div class="result-stats">
+            <div class="result-stat">
+              <div class="result-value" id="finalWPM">0</div>
+              <div class="result-label">WPM</div>
+            </div>
+            <div class="result-stat">
+              <div class="result-value" id="finalAccuracy">0%</div>
+              <div class="result-label">Accuracy</div>
+            </div>
+            <div class="result-stat">
+              <div class="result-value" id="finalTime">0s</div>
+              <div class="result-label">Time</div>
+            </div>
+          </div>
+          <button id="closeModal" class="control-btn primary">
+            <i class="fas fa-play"></i>
+            Try Again
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="center">
+        <div class="footer-content">
+          <p>© 2024 Pro Typing Master | 
+            <span id="version">v2.0</span> | 
+            <a class="grey" href="#" id="themeToggle">
+              <i class="fas fa-moon"></i> Dark Mode
+            </a>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bootstrap script -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- My Javascript -->
+    <script src="app.js"></script>
+  </body>
+</html>
